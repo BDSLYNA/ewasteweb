@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recycle & Donate - The E-Cycle Hub</title>
     <style>
-        /* Shared Styles */
+       
         body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f9; color: #333; }
         .header { background-color: #004d40; color: white; padding: 15px 20px; text-align: center; }
         .nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: bold; }
@@ -14,7 +14,6 @@
         .content-section { padding: 40px 20px; max-width: 1000px; margin: 0 auto; line-height: 1.6; }
         .content-section h2 { color: #004d40; border-bottom: 2px solid #ff9800; padding-bottom: 10px; margin-top: 30px; }
 
-        /* Recycle/Donate Specific Styles */
         .tool-box { background: white; padding: 25px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); margin-bottom: 30px; }
         .finder-input { display: flex; gap: 10px; margin-bottom: 20px; }
         .finder-input input { padding: 10px; flex: 3; border: 1px solid #ccc; border-radius: 4px; }
@@ -29,7 +28,7 @@
         .program-list a { color: #00796b; text-decoration: none; font-weight: bold; }
         .program-list a:hover { text-decoration: underline; }
 
-        /* Footer Style */
+       
         .footer { background-color: #333; color: white; text-align: center; padding: 20px; margin-top: 40px; }
     </style>
 </head>
@@ -109,11 +108,12 @@
             const zip = document.getElementById('zipCode').value.trim();
             if (zip) {
                 alert(`Searching for certified recyclers near ${zip}... (This would integrate with a Google Maps/Earth911 API in a real application)`);
-                // Placeholder: In a real app, this would make an API call and update recyclerResults.
+
             } else {
                 alert("Please enter a Zip Code or City.");
             }
         }
     </script>
 </body>
+
 </html>
