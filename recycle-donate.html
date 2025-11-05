@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recycle & Donate - The E-Cycle Hub</title>
+    <style>
+        /* Shared Styles */
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f9; color: #333; }
+        .header { background-color: #004d40; color: white; padding: 15px 20px; text-align: center; }
+        .nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: bold; }
+        .login-link { float: right; margin-right: 20px; }
+        .page-title { background: #00796b; color: white; padding: 50px 20px; text-align: center; }
+        .content-section { padding: 40px 20px; max-width: 1000px; margin: 0 auto; line-height: 1.6; }
+        .content-section h2 { color: #004d40; border-bottom: 2px solid #ff9800; padding-bottom: 10px; margin-top: 30px; }
+
+        /* Recycle/Donate Specific Styles */
+        .tool-box { background: white; padding: 25px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); margin-bottom: 30px; }
+        .finder-input { display: flex; gap: 10px; margin-bottom: 20px; }
+        .finder-input input { padding: 10px; flex: 3; border: 1px solid #ccc; border-radius: 4px; }
+        .finder-input button { flex: 1; background-color: #00796b; color: white; border: none; padding: 10px; border-radius: 4px; cursor: pointer; }
+        .finder-input button:hover { background-color: #004d40; }
+        .result-list { list-style: none; padding: 0; }
+        .result-list li { padding: 10px; border-bottom: 1px dashed #ccc; }
+        .result-list li:last-child { border-bottom: none; }
+        .security-alert { background-color: #fff3e0; border-left: 5px solid #ff9800; padding: 15px; margin-top: 20px; font-weight: bold; }
+        .program-list { list-style: none; padding: 0; }
+        .program-list li { margin-bottom: 15px; }
+        .program-list a { color: #00796b; text-decoration: none; font-weight: bold; }
+        .program-list a:hover { text-decoration: underline; }
+
+        /* Footer Style */
+        .footer { background-color: #333; color: white; text-align: center; padding: 20px; margin-top: 40px; }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <nav class="nav">
+            <a href="index.html">Home</a>
+            <a href="ewaste-info.html">What is E-waste?</a>
+            <a href="dss-hub.html">The DSS Hub (PC Listing)</a>
+            <a href="recycle-donate.html">Recycle & Donate</a>
+            <a href="resources.html">Resources</a>
+            <a href="login.html" class="login-link">Login</a>
+        </nav>
+    </div>
+
+    <div class="page-title">
+        <h1>Responsible End-of-Life Options</h1>
+        <p>Your guide to recycling, donating, and securing your data.</p>
+    </div>
+
+    <div class="content-section">
+        <h2>E-Waste Recycler Finder</h2>
+        <div class="tool-box">
+            <p>Find a certified e-waste recycler or municipal take-back program near you.</p>
+            <div class="finder-input">
+                <input type="text" id="zipCode" placeholder="Enter Zip Code / City">
+                <button onclick="searchRecyclers()">Search Locations</button>
+            </div>
+            <ul id="recyclerResults" class="result-list">
+                <li>**Certified E-Cyclers:** 123 Green Way, Anytown. Accepts Monitors & Hard Drives.</li>
+                <li>**City Recycling Center:** 456 Main St, Anytown. *Hazardous Materials Accepted Saturdays only.*</li>
+                <li>**Retailer Take-Back:** Best Buy/Staples Location - Check store for details.</li>
+            </ul>
+        </div>
+
+        <h2>Data Security: Before You Let Go</h2>
+        <div class="security-alert">
+            <p><strong>STOP!</strong> Always wipe your hard drive before recycling or donating. Data breaches from improper disposal are common.</p>
+        </div>
+        <p>Best Practices for Data Wiping:</p>
+        <ol>
+            <li>**Factory Reset:** Use built-in OS tools (for phones/tablets/laptops).</li>
+            <li>**Data Erasure Software:** Use free tools like DBAN or paid commercial software for certified overwriting.</li>
+            <li>**Physical Destruction:** For absolute security, physically destroy the hard drive (e.g., shredding or degaussing) *only* if you are sure you will not reuse the computer.</li>
+        </ol>
+        <p>Links to Free/Paid Data Erasure Tools: <a href="resources.html">See Resources Page</a></p>
+
+        <h2 id="donation">Donation Centers & Reuse Programs</h2>
+        <div class="tool-box">
+            <p>Give your functional PC a second life through programs that refurbish for charity or education.</p>
+            <ul class="program-list">
+                <li>**Computers for Schools:** Accepts functional PCs for student use. <a href="#">(Link to program)</a></li>
+                <li>**Local Goodwill/Salvation Army:** Often partner with tech recyclers for donation/resale. <a href="#">(Link to local branch)</a></li>
+                <li>**Non-Profit Refurbishers:** Specialized organizations that clean, repair, and redistribute hardware.</li>
+            </ul>
+        </div>
+
+        <h2>Corporate Programs & Trade-ins</h2>
+        <div class="tool-box">
+            <p>Many major manufacturers offer free recycling or trade-in credit for old devices.</p>
+            <ul class="program-list">
+                <li>**HP Planet Partners:** <a href="#">(Link to HP Recycling)</a></li>
+                <li>**Dell Reconnect:** <a href="#">(Link to Dell Recycling)</a></li>
+                <li>**Apple Trade In:** <a href="#">(Link to Apple Program)</a></li>
+                <li>**Samsung Takeback:** <a href="#">(Link to Samsung Program)</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2025 The E-Cycle Hub. Dedicated to Smart E-waste Management.</p>
+    </div>
+
+    <script>
+        function searchRecyclers() {
+            const zip = document.getElementById('zipCode').value.trim();
+            if (zip) {
+                alert(`Searching for certified recyclers near ${zip}... (This would integrate with a Google Maps/Earth911 API in a real application)`);
+                // Placeholder: In a real app, this would make an API call and update recyclerResults.
+            } else {
+                alert("Please enter a Zip Code or City.");
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources & About - The E-Cycle Hub</title>
+    <style>
+        /* Shared Styles */
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f9; color: #333; }
+        .header { background-color: #004d40; color: white; padding: 15px 20px; text-align: center; }
+        .nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: bold; }
+        .login-link { float: right; margin-right: 20px; }
+        .page-title { background: #00796b; color: white; padding: 50px 20px; text-align: center; }
+        .content-section { padding: 40px 20px; max-width: 1000px; margin: 0 auto; line-height: 1.6; }
+        .content-section h2 { color: #004d40; border-bottom: 2px solid #ff9800; padding-bottom: 10px; margin-top: 30px; }
+
+        /* Resource Specific Styles */
+        .resource-list { list-style: none; padding: 0; }
+        .resource-list li { background: white; padding: 15px; border-radius: 5px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); margin-bottom: 15px; }
+        .resource-list a { color: #00796b; text-decoration: none; font-weight: bold; }
+        .resource-list a:hover { text-decoration: underline; }
+        
+        /* About/Contact Styles */
+        .contact-form label { display: block; margin-top: 10px; font-weight: bold; }
+        .contact-form input[type="text"], 
+        .contact-form input[type="email"], 
+        .contact-form textarea { width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        .contact-form button { background-color: #ff9800; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; margin-top: 15px; transition: background-color 0.3s; }
+        .contact-form button:hover { background-color: #e65100; }
+
+        /* Footer Style */
+        .footer { background-color: #333; color: white; text-align: center; padding: 20px; margin-top: 40px; }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <nav class="nav">
+            <a href="index.html">Home</a>
+            <a href="ewaste-info.html">What is E-waste?</a>
+            <a href="dss-hub.html">The DSS Hub (PC Listing)</a>
+            <a href="recycle-donate.html">Recycle & Donate</a>
+            <a href="resources.html">Resource</a>
+            <a href="login.html" class="login-link">Login</a>
+        </nav>
+    </div>
+
+    <div class="page-title">
+        <h1>Resources, Guides, & About Us</h1>
+        <p>Your hub for supplementary learning and contact information.</p>
+    </div>
+
+    <div class="content-section">
+        
+        <h2>E-waste Data & Legislation 📊</h2>
+        <ul class="resource-list">
+            <li><a href="#" target="_blank">The Global E-waste Monitor (UN)</a> - Access the latest global reports and statistics on e-waste generation.</li>
+            <li><a href="#" target="_blank">EPA E-waste Management Guidelines</a> - Official guidelines and best practices from the US Environmental Protection Agency.</li>
+            <li><a href="#" target="_blank">WEEE Directive Summary (EU)</a> - Information on the European Union's major e-waste regulatory framework.</li>
+            <li><a href="#" target="_blank">Circular Economy Articles</a> - A collection of articles promoting the circular economy model for electronics.</li>
+        </ul>
+
+        <hr>
+
+        <h2>Data Security & Wiping Tools 🛡️</h2>
+        <ul class="resource-list">
+            <li><a href="#" target="_blank">DBAN (Darik's Boot and Nuke)</a> - A free, well-known tool for securely wiping hard drives before disposal (for non-functional PCs).</li>
+            <li><a href="#" target="_blank">Microsoft Factory Reset Guide</a> - Step-by-step instructions for securely resetting Windows devices.</li>
+            <li><a href="#" target="_blank">How to Degauss a Hard Drive</a> - Detailed guide on the physical process of demagnetization for data destruction.</li>
+        </ul>
+
+        <hr>
+
+        <h2>DIY PC Upgrade & Repair Guides 🛠️</h2>
+        <p>Follow our guides to extend your device's lifespan, supporting the *Refurbish* step of the E-waste Hierarchy.</p>
+        <ul class="resource-list">
+            <li><a href="#" target="_blank">Guide: Installing an SSD to Speed Up an Old Laptop</a></li>
+            <li><a href="#" target="_blank">Guide: Simple RAM Upgrade for Desktop PCs</a></li>
+            <li><a href="#" target="_blank">Tutorial: Installing ChromeOS Flex on an Older PC</a></li>
+        </ul>
+
+        <hr>
+
+        <h2 id="about">About The E-Cycle Hub</h2>
+        <p>The E-Cycle Hub is an initiative dedicated to promoting responsible E-waste management through education and data-driven decision making. We believe that informed users are the first line of defense against the growing global e-waste crisis.</p>
+        <p>We are a project led by environmental advocates and IT professionals aiming to bridge the gap between technology consumption and sustainability practices.</p>
+
+        <hr>
+
+        <h2 id="contact">Contact & FAQ</h2>
+        <form class="contact-form">
+            <p>Have questions about the DSS, e-waste, or partnerships? Send us a message!</p>
+            <label for="contactName">Name:</label>
+            <input type="text" id="contactName" name="contactName" required>
+
+            <label for="contactEmail">Email:</label>
+            <input type="email" id="contactEmail" name="contactEmail" required>
+
+            <label for="contactMessage">Message:</label>
+            <textarea id="contactMessage" name="contactMessage" rows="4" required></textarea>
+
+            <button type="submit">Send Message</button>
+        </form>
+
+        <p style="margin-top: 30px;">**Frequently Asked Questions (FAQ):**</p>
+        <ul>
+            <li>**Q: How is the 'Estimated Lifespan' calculated?** A: It is based on a simplified model considering the average functional age of components (CPU/RAM) and the initial purchase date.</li>
+            <li>**Q: Are your Recyclers certified?** A: We prioritize linking to nationally recognized, certified recycling programs (like R2 or e-Stewards certified facilities).</li>
+        </ul>
+
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2025 The E-Cycle Hub. Dedicated to Smart E-waste Management. | <a href="#about" style="color: white;">Privacy Policy</a></p>
+    </div>
+
+</body>
+</html>

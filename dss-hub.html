@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSS Hub (PC Listing) - The E-Cycle Hub</title>
+    <style>
+        /* Shared Styles */
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f9; color: #333; }
+        .header { background-color: #004d40; color: white; padding: 15px 20px; text-align: center; }
+        .nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: bold; }
+        .login-link { float: right; margin-right: 20px; }
+        .page-title { background: #00796b; color: white; padding: 50px 20px; text-align: center; }
+        .content-section { padding: 40px 20px; max-width: 1000px; margin: 0 auto; }
+        .content-section h2 { color: #004d40; border-bottom: 2px solid #ff9800; padding-bottom: 10px; margin-top: 30px; }
+        
+        /* DSS Specific Styles */
+        .dss-form, .dss-output { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); margin-top: 20px; }
+        .form-group { margin-bottom: 15px; display: flex; align-items: center; }
+        .form-group label { flex: 1; font-weight: bold; margin-right: 20px; text-align: right; }
+        .form-group input, .form-group select { flex: 2; padding: 10px; border: 1px solid #ccc; border-radius: 4px; }
+        .analyze-button { background-color: #ff9800; color: white; padding: 15px 30px; border: none; border-radius: 5px; font-size: 1.1em; cursor: pointer; margin-top: 20px; width: 100%; transition: background-color 0.3s; }
+        .analyze-button:hover { background-color: #e65100; }
+        
+        .output-box { border: 2px solid #00796b; padding: 20px; margin-top: 20px; border-radius: 5px; }
+        .output-recommendation { font-size: 1.5em; font-weight: bold; color: #d32f2f; margin-top: 10px; }
+        .output-summary table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        .output-summary th, .output-summary td { border: 1px solid #eee; padding: 8px; text-align: left; }
+        .output-summary th { background-color: #f0f0f0; }
+        .next-steps a { display: inline-block; background-color: #4CAF50; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; margin-right: 10px; transition: background-color 0.3s; }
+        .next-steps a:hover { background-color: #388E3C; }
+        
+        .hidden { display: none; }
+
+        /* Footer Style */
+        .footer { background-color: #333; color: white; text-align: center; padding: 20px; margin-top: 40px; }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <nav class="nav">
+            <a href="index.html">Home</a>
+            <a href="ewaste-info.html">What is E-waste?</a>
+            <a href="dss-hub.html">The DSS Hub (PC Listing)</a>
+            <a href="recycle-donate.html">Recycle & Donate</a>
+            <a href="resources.html">Resources</a>
+            <a href="login.html" class="login-link">Login</a>
+        </nav>
+    </div>
+
+    <div class="page-title">
+        <h1>The DSS Hub: PC Management Decision Support</h1>
+        <p>Enter your PC's specifications to receive a personalized, responsible end-of-life recommendation.</p>
+    </div>
+
+    <div class="content-section">
+        <h2>A. PC Listing & Specs Input</h2>
+        <form id="dssForm" class="dss-form">
+            <div class="form-group">
+                <label for="assetId">Asset ID (Internal):</label>
+                <input type="text" id="assetId" value="Office-Desktop-2020" required>
+            </div>
+            <div class="form-group">
+                <label for="deviceType">Device Type:</label>
+                <select id="deviceType">
+                    <option>Desktop</option>
+                    <option>Laptop</option>
+                    <option>Server</option>
+                    <option>All-in-One</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="purchaseDate">Purchase Date:</label>
+                <input type="date" id="purchaseDate" value="2019-01-01" required>
+            </div>
+            <div class="form-group">
+                <label for="os">Operating System:</label>
+                <select id="os">
+                    <option>Windows</option>
+                    <option>macOS</option>
+                    <option>Linux</option>
+                    <option>ChromeOS</option>
+                    <option>Other/None</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="cpu">CPU (e.g., i5-8400, Ryzen 5):</label>
+                <input type="text" id="cpu" value="i5-8400">
+            </div>
+            <div class="form-group">
+                <label for="ram">RAM (GB):</label>
+                <input type="number" id="ram" value="8" min="1" required>
+            </div>
+            <div class="form-group">
+                <label for="storage">Storage (GB) & Type:</label>
+                <input type="number" id="storage" value="256" min="10">
+                <select id="storageType">
+                    <option>SSD</option>
+                    <option>HDD</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="monitorType">Monitor Type (Hazard):</label>
+                <select id="monitorType">
+                    <option>LCD/LED (Lower Hazard)</option>
+                    <option>CRT (High Hazard)</option>
+                    <option>None</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="condition">Condition:</label>
+                <select id="condition">
+                    <option>Excellent</option>
+                    <option>Good</option>
+                    <option>Fair (Needs Repair)</option>
+                    <option>Non-functional</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="currentUse">Current Use:</label>
+                <select id="currentUse">
+                    <option>Daily Work</option>
+                    <option>Light Use</option>
+                    <option>Storage/Backup</option>
+                    <option>None</option>
+                </select>
+            </div>
+            <button type="submit" class="analyze-button">Analyze Device & Get Recommendation</button>
+        </form>
+
+        <h2>C. DSS Output Section</h2>
+        <div id="dssOutput" class="dss-output hidden">
+            <h3>Decision Analysis for <span id="outputAssetId"></span></h3>
+            
+            <div class="output-summary">
+                <h4>Device Summary:</h4>
+                <table>
+                    <tr><th>Specs</th><td id="outputSpecs"></td></tr>
+                    <tr><th>Age</th><td id="outputAge"></td></tr>
+                    <tr><th>Condition</th><td id="outputCondition"></td></tr>
+                    <tr><th>Monitor</th><td id="outputMonitor"></td></tr>
+                </table>
+                <p><strong>Estimated Lifespan Remaining:</strong> <span id="outputLifespan"></span></p>
+            </div>
+            
+            <div class="output-box">
+                <h4>DSS Recommendation:</h4>
+                <p class="output-recommendation" id="outputRecommendation"></p>
+                <p id="outputRationale"></p>
+            </div>
+
+            <div class="next-steps">
+                <h4>Next Steps:</h4>
+                <a id="step1" href="recycle-donate.html">Recycle & Donate Options</a>
+                <a id="step2" href="resources.html">DIY Upgrade Guides</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2025 The E-Cycle Hub. Dedicated to Smart E-waste Management.</p>
+    </div>
+
+    <script>
+        document.getElementById('dssForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // 1. Collect Data
+            const data = {
+                assetId: document.getElementById('assetId').value,
+                deviceType: document.getElementById('deviceType').value,
+                purchaseDate: new Date(document.getElementById('purchaseDate').value),
+                os: document.getElementById('os').value,
+                cpu: document.getElementById('cpu').value,
+                ram: parseInt(document.getElementById('ram').value),
+                storage: parseInt(document.getElementById('storage').value),
+                storageType: document.getElementById('storageType').value,
+                monitorType: document.getElementById('monitorType').value,
+                condition: document.getElementById('condition').value,
+                currentUse: document.getElementById('currentUse').value
+            };
+
+            const today = new Date();
+            const ageYears = (today - data.purchaseDate) / (1000 * 60 * 60 * 24 * 365.25);
+            const isMidRange = data.ram >= 8 && data.storage >= 250 && data.storageType === 'SSD';
+
+            // 2. DSS Logic (Simplified)
+            let recommendation = "";
+            let rationale = "";
+            let lifespan = "3-5 years with maintenance.";
+
+            if (data.monitorType === 'CRT (High Hazard)' || data.condition === 'Non-functional') {
+                recommendation = "Recycle: Mandatory Hazardous Waste Disposal";
+                rationale = "Your device or monitor contains highly hazardous materials (e.g., Lead) or is non-functional, making responsible, certified recycling the only viable option.";
+                lifespan = "0 years (Immediate End-of-Life)";
+            } else if (ageYears < 3 && isMidRange && data.condition === 'Excellent') {
+                recommendation = "Keep/Optimize: Device is Modern";
+                rationale = "Your PC is modern and meets current performance standards. Focus on software optimization and regular maintenance to maximize its lifespan.";
+                lifespan = "4-6 years remaining.";
+            } else if (ageYears > 5 && data.ram <= 4 && data.condition === 'Good') {
+                recommendation = "Refurbish/Donate: Low-Spec, High Potential";
+                rationale = "The device is older and low on RAM, but functional. A simple upgrade (RAM/SSD) or installing a lighter OS (like ChromeOS Flex) would make it excellent for donation.";
+                lifespan = "1-3 years with upgrades.";
+            } else if (data.condition === 'Fair (Needs Repair)') {
+                recommendation = "Repair or Refurbish";
+                rationale = "Since the device is repairable, consider taking it to a local shop. Repair is better than replacement for the environment.";
+                lifespan = "Varies based on repair.";
+            } else if (data.currentUse === 'None' && isMidRange) {
+                recommendation = "Resale/Trade-in: High Value Potential";
+                rationale = "Your device is functional and has decent specifications but is unused. Consider reselling or trading it in to recapture value and allow someone else to reuse it.";
+                lifespan = "Varies based on buyer use.";
+            } else {
+                recommendation = "Reuse or Seek Professional Assessment";
+                rationale = "The data suggests a mix of factors. You should prioritize finding a direct reuse path (donation) or seek advice from a professional refurbisher.";
+                lifespan = "1-3 years remaining.";
+            }
+
+            // 3. Display Output
+            document.getElementById('outputAssetId').textContent = data.assetId;
+            document.getElementById('outputSpecs').innerHTML = `**${data.deviceType}** | **CPU:** ${data.cpu} | **RAM:** ${data.ram}GB | **Storage:** ${data.storage}GB (${data.storageType})`;
+            document.getElementById('outputAge').textContent = `${ageYears.toFixed(1)} years`;
+            document.getElementById('outputCondition').textContent = data.condition;
+            document.getElementById('outputMonitor').textContent = data.monitorType;
+            document.getElementById('outputLifespan').textContent = lifespan;
+            document.getElementById('outputRecommendation').textContent = recommendation;
+            document.getElementById('outputRationale').textContent = rationale;
+            
+            // Adjust Next Steps links based on recommendation
+            const step1 = document.getElementById('step1');
+            const step2 = document.getElementById('step2');
+            
+            step1.textContent = (recommendation.includes('Recycle') || recommendation.includes('Trade-in')) ? "Find Recyclers/Trade-in" : "Find Donation Centers";
+            step1.href = "recycle-donate.html";
+            
+            step2.textContent = (recommendation.includes('Refurbish') || recommendation.includes('Repair')) ? "Find Local Repair Shops" : "View Resources & Guides";
+            step2.href = (recommendation.includes('Refurbish') || recommendation.includes('Repair')) ? "recycle-donate.html#repair" : "resources.html";
+
+            document.getElementById('dssOutput').classList.remove('hidden');
+            document.getElementById('dssOutput').scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
