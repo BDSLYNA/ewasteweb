@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DSS Hub (PC Listing) - The E-Cycle Hub</title>
     <style>
-        /* Shared Styles */
+        
         body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f9; color: #333; }
         .header { background-color: #004d40; color: white; padding: 15px 20px; text-align: center; }
         .nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: bold; }
@@ -14,7 +14,7 @@
         .content-section { padding: 40px 20px; max-width: 1000px; margin: 0 auto; }
         .content-section h2 { color: #004d40; border-bottom: 2px solid #ff9800; padding-bottom: 10px; margin-top: 30px; }
         
-        /* DSS Specific Styles */
+        
         .dss-form, .dss-output { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); margin-top: 20px; }
         .form-group { margin-bottom: 15px; display: flex; align-items: center; }
         .form-group label { flex: 1; font-weight: bold; margin-right: 20px; text-align: right; }
@@ -32,7 +32,6 @@
         
         .hidden { display: none; }
 
-        /* Footer Style */
         .footer { background-color: #333; color: white; text-align: center; padding: 20px; margin-top: 40px; }
     </style>
 </head>
@@ -166,7 +165,7 @@
         document.getElementById('dssForm').addEventListener('submit', function(e) {
             e.preventDefault();
 
-            // 1. Collect Data
+       
             const data = {
                 assetId: document.getElementById('assetId').value,
                 deviceType: document.getElementById('deviceType').value,
@@ -185,7 +184,7 @@
             const ageYears = (today - data.purchaseDate) / (1000 * 60 * 60 * 24 * 365.25);
             const isMidRange = data.ram >= 8 && data.storage >= 250 && data.storageType === 'SSD';
 
-            // 2. DSS Logic (Simplified)
+       
             let recommendation = "";
             let rationale = "";
             let lifespan = "3-5 years with maintenance.";
@@ -216,7 +215,7 @@
                 lifespan = "1-3 years remaining.";
             }
 
-            // 3. Display Output
+       
             document.getElementById('outputAssetId').textContent = data.assetId;
             document.getElementById('outputSpecs').innerHTML = `**${data.deviceType}** | **CPU:** ${data.cpu} | **RAM:** ${data.ram}GB | **Storage:** ${data.storage}GB (${data.storageType})`;
             document.getElementById('outputAge').textContent = `${ageYears.toFixed(1)} years`;
@@ -226,7 +225,7 @@
             document.getElementById('outputRecommendation').textContent = recommendation;
             document.getElementById('outputRationale').textContent = rationale;
             
-            // Adjust Next Steps links based on recommendation
+          
             const step1 = document.getElementById('step1');
             const step2 = document.getElementById('step2');
             
@@ -243,3 +242,4 @@
 </body>
 
 </html>
+
